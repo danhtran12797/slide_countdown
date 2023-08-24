@@ -67,33 +67,24 @@ class DigitSeparatedItem extends BaseDigitsSeparated {
       height: height,
       width: width,
       decoration: decoration,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: textDirection.isRtl
-            ? [secondDigitWidget, firstDigitWidget]
-            : [
-                firstDigitWidget,
-                secondDigitWidget,
-              ],
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: textDirection.isRtl
+                ? [secondDigitWidget, firstDigitWidget]
+                : [
+                    firstDigitWidget,
+                    secondDigitWidget,
+                  ],
+          ),
+          separatorWidget
+        ],
       ),
     );
 
-    return Visibility(
-      visible: showSeparator,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: textDirection.isRtl
-            ? [
-                separatorWidget,
-                box,
-              ]
-            : [
-                box,
-                separatorWidget,
-              ],
-      ),
-      replacement: box,
-    );
+    return box;
   }
 }

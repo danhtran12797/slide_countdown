@@ -28,8 +28,8 @@ class SlideCountdownSeparated extends StatefulWidget {
   const SlideCountdownSeparated({
     super.key,
     this.duration,
-    this.height = 30,
-    this.width = 30,
+    this.height = 33,
+    this.width = 33,
     this.textStyle =
         const TextStyle(color: Color(0xFFFFFFFF), fontWeight: FontWeight.bold),
     this.separatorStyle =
@@ -53,7 +53,7 @@ class SlideCountdownSeparated extends StatefulWidget {
     this.countUp = false,
     this.infinityCountUp = false,
     this.slideAnimationDuration = const Duration(milliseconds: 300),
-    this.textDirection = TextDirection.rtl,
+    this.textDirection = TextDirection.ltr,
     this.digitsNumber,
     this.streamDuration,
     this.onChanged,
@@ -300,7 +300,7 @@ class _SlideCountdownSeparatedState extends State<SlideCountdownSeparated>
 
   @override
   Widget build(BuildContext context) {
-    final durationTitle = widget.durationTitle ?? DurationTitle.en();
+    final durationTitle = widget.durationTitle ?? DurationTitle.vi();
     final separator = widget.separator ?? ':';
 
     final leadingIcon = Visibility(
@@ -444,22 +444,30 @@ class _SlideCountdownSeparatedState extends State<SlideCountdownSeparated>
 
         final secondsWidget = showSeconds ? seconds : const SizedBox.shrink();
 
+        final spaceWidth = SizedBox(width: 4,);
+
         return Row(
           mainAxisSize: MainAxisSize.min,
           children: widget.textDirection.isRtl
               ? [
                   suffixIcon,
                   secondsWidget,
+                  spaceWidth,
                   minutesWidget,
+                  spaceWidth,
                   hoursWidget,
+                  spaceWidth,
                   daysWidget,
                   leadingIcon,
                 ]
               : [
                   leadingIcon,
                   daysWidget,
+                  spaceWidth,
                   hoursWidget,
+                  spaceWidth,
                   minutesWidget,
+                  spaceWidth,
                   secondsWidget,
                   suffixIcon,
                 ],

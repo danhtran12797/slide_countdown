@@ -77,6 +77,13 @@ class DurationTitle {
         seconds: 'seconds',
       );
 
+  factory DurationTitle.vi() => const DurationTitle(
+    days: 'ngày',
+    hours: 'giờ',
+    minutes: 'phút',
+    seconds: 'giây',
+  );
+
   factory DurationTitle.enShort() => const DurationTitle(
         days: 'd',
         hours: 'h',
